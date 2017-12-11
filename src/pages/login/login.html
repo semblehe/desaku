@@ -1,0 +1,23 @@
+<ion-header>
+
+  <ion-navbar color="danger">
+    <ion-title>Login</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item >
+      <ion-label floating class="lbl">Username</ion-label>
+      <ion-input type="text" [(ngModel)]="form.username" name="username"></ion-input>
+    </ion-item>
+    <ion-item class="inp">
+      <ion-label floating class="lbl">Password</ion-label>
+      <ion-input type="password"  [(ngModel)]="form.password" name="password"></ion-input >
+    </ion-item>
+    <br>
+    <button ion-button round full color="danger" (click)="login()">Login</button>
+  </ion-list>
+</ion-content>

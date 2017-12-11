@@ -1,0 +1,35 @@
+<ion-header >
+  <ion-toolbar color="danger">
+    <ion-title>Desaku</ion-title>
+    <ion-buttons end *ngIf="!ses">
+      <button ion-button icon-only (click)="login()">
+        <ion-icon name="md-log-in"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="ses">
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card *ngFor="let ar of artikel">
+                    <img src="http://sockieshop.com/images/posting/{{ar.idartikel}}.jpg?{{time}}" />
+                    <!-- onerror="this.src='assets/icon/avatar.png';" -->
+  <ion-card-content>
+    <ion-card-title>
+      {{ ar.judul }}
+      </ion-card-title>
+    <p align="justify">
+      {{ ar.artikel }}
+    </p>
+  </ion-card-content>
+</ion-card>
+
+<ion-fab right bottom *ngIf="ses">
+    <button ion-fab color="danger" (click)="tambah()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+
+</ion-content>

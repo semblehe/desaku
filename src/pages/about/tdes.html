@@ -1,0 +1,64 @@
+<ion-header>
+
+    <ion-navbar color="danger">
+        <ion-title>Tambah Deskripsi</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-select submitText="Pilih" name="kditem" [(ngModel)]="form.kditem">
+                <ion-option value="">Pilih Item</ion-option>
+                <ion-option value="01">Wisata Alam</ion-option>
+                <ion-option value="02">Wisata Budaya</ion-option>
+                <ion-option value="03">Agrowisata</ion-option>
+                <ion-option value="04">Wisata Kerajinan</ion-option>
+                <ion-option value="05">Wisata Religi</ion-option>
+                <ion-option value="06">Penginapan/ Homestay</ion-option>
+                <ion-option value="07">Tempat Makan/ Kuliner</ion-option>
+                <ion-option value="08">Fasum/Tempat</ion-option>
+                <ion-option value="09">Toko Oleh-oleh</ion-option>
+                <ion-option value="10">Aksesbilitas</ion-option>
+            </ion-select>
+        </ion-item>
+        <div padding
+             *ngIf="form.kditem=='01' || form.kditem=='03' || form.kditem=='04' || form.kditem=='05' || form.kditem=='06'">
+            <button ion-button color="secondary" (click)="kamera()">Kamera</button>
+            <button ion-button color="danger" (click)="media()">File</button>
+        </div>
+        <ion-item *ngIf="form.kditem!=''">
+            <ion-label floating class="lbl" *ngIf="form.kditem!='10'">Nama</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='10'">Deskripsi</ion-label>
+            <ion-textarea [(ngModel)]="form.desk1" name="desk1"></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="form.kditem!='10' && form.kditem!=''">
+            <ion-label floating class="lbl" *ngIf="form.kditem=='01'">Tiket Masuk</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='02' || form.kditem=='04'|| form.kditem=='05'">
+                Deskripsi
+            </ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='03'">Fasilitas</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='06'">Alamat</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='07'">Menu Khas</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='09'">Jualan</ion-label>
+            <ion-textarea [(ngModel)]="form.desk2" name="desk2"></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="form.kditem=='01' || form.kditem=='02' || form.kditem=='04'|| form.kditem=='06' || form.kditem=='07' || form.kditem=='09'">
+            <ion-label floating class="lbl" *ngIf="form.kditem=='01'">Deskripsi</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='02'">Waktu Pertunjukan</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='04' || form.kditem=='07'">Harga</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='06'">Kontak Person</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='09'">Alamat</ion-label>
+            <ion-textarea [(ngModel)]="form.desk3" name="desk3"></ion-textarea>
+        </ion-item>
+        <ion-item *ngIf="form.kditem=='06' || form.kditem=='07'">
+            <ion-label floating class="lbl" *ngIf="form.kditem=='06'">Harga</ion-label>
+            <ion-label floating class="lbl" *ngIf="form.kditem=='07'">Alamat</ion-label>
+            <ion-textarea [(ngModel)]="form.desk4" name="desk4"></ion-textarea>
+        </ion-item>
+        <br>
+        <button *ngIf="form.kditem!=''" ion-button round full color="danger" (click)="simpan()">SIMPAN</button>
+    </ion-list>
+</ion-content>

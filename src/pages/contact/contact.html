@@ -1,0 +1,43 @@
+<ion-header >
+  <ion-toolbar color="danger">
+    <ion-title>Desaku</ion-title>
+    <ion-buttons end *ngIf="!ses">
+      <button ion-button icon-only (click)="login()">
+        <ion-icon name="md-log-in"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end *ngIf="ses">
+      <button ion-button icon-only (click)="logout()">
+        <ion-icon name="md-log-out"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-card>
+
+    <img src="assets/imgs/splash.png"/>
+
+    <ion-card-content>
+      <ion-card-title>
+        Desaku
+      </ion-card-title>
+      <p>
+        Deskripsi
+      </p>
+    </ion-card-content>
+
+    <ion-item>
+      <ion-icon name="person" item-start></ion-icon>
+      Beny Prasetyo S.Kom., M.Kom
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name="card" item-start></ion-icon>
+760016852
+    </ion-item>
+
+  </ion-card>
+
+</ion-content>
