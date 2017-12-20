@@ -6,9 +6,11 @@ import { Camera } from '@ionic-native/camera';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { DetailPage } from '../pages/home/detail';
 import { TartikelPage } from '../pages/home/tartikel';
 import { DetailpetaPage } from '../pages/about/detailpeta';
 import { TdesPage } from '../pages/about/tdes';
+import { ModalPage } from '../pages/about/modal';
 import { LoginPage } from '../pages/login/login';
 import { TabsPage } from '../pages/tabs/tabs';
 
@@ -26,7 +28,9 @@ import { HttpModule } from '@angular/http';
     DetailpetaPage,
     TdesPage,
     LoginPage,
-    TabsPage
+    TabsPage,
+      DetailPage,
+      ModalPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,9 @@ import { HttpModule } from '@angular/http';
     DetailpetaPage,
     TdesPage,
     LoginPage,
-    TabsPage
+    TabsPage,
+      DetailPage,
+      ModalPage
   ],
   providers: [
     StatusBar,

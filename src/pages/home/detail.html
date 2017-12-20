@@ -1,0 +1,16 @@
+<ion-header >
+    <ion-navbar color="danger">
+        <ion-title>{{judul}}</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-card >
+        <img src="http://sockieshop.com/images/posting/{{idart}}.jpg?{{time}}" />
+        <!-- onerror="this.src='assets/icon/avatar.png';" -->
+        <ion-card-content>
+            <p align="justify">
+                {{ artikel }}
+            </p>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

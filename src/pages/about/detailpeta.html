@@ -1,22 +1,7 @@
 <ion-header>
-    <ion-toolbar color="danger">
-        <ion-buttons>
-        <button ion-button icon-only (click)="goBack()">
-            <ion-icon name="md-arrow-back"></ion-icon>
-        </button>
-        </ion-buttons>
+    <ion-navbar color="danger">
         <ion-title>{{namadesa}}</ion-title>
-        <ion-buttons end *ngIf="!ses">
-            <button ion-button icon-only (click)="login()">
-                <ion-icon name="md-log-in"></ion-icon>
-            </button>
-        </ion-buttons>
-        <ion-buttons end *ngIf="ses">
-            <button ion-button icon-only (click)="logout()">
-                <ion-icon name="md-log-out"></ion-icon>
-            </button>
-        </ion-buttons>
-    </ion-toolbar>
+    </ion-navbar>
 </ion-header>
 
 <ion-content padding>
@@ -27,15 +12,15 @@
         </ion-card-header>
         <ion-card-content>
             <ion-list *ngFor="let de of d.detail; let j = index">
-                <button ion-item (click)="show(i, j)">
-                    <ion-thumbnail item-start
+                <ion-item>
+                <ion-thumbnail item-start
                                    *ngIf="d.kditem=='01' || d.kditem=='03' || d.kditem=='04' || d.kditem=='05' || d.kditem=='06'">
-                        <img src="http://sockieshop.com/images/desk/{{de.iddes}}.jpg?{{time}}">
+                        <img src="http://sockieshop.com/images/desk/{{de.iddes}}.jpg?{{time}}" onerror="this.src='assets/imgs/noimage.png';" (click)="showFoto(de.iddes)">
                     </ion-thumbnail>
-                    <h2>{{de.des1}}</h2>
+                <div (click)="show(i, j)">
+                <h2>{{de.des1}}</h2>
                     <p *ngIf="d.kditem=='01'">Tiket Masuk : {{de.des2}}</p>
                     <p *ngIf="d.kditem=='02'">Waktu Pertunjukan : {{de.des3}}</p>
-                    <p *ngIf="d.kditem=='03'">Fasilitas : {{de.des2}}</p>
                     <p *ngIf="d.kditem=='04'">Harga : {{de.des3}}</p>
                     <p *ngIf="d.kditem=='06'">Kontak Person : {{de.des3}}</p>
                     <p *ngIf="d.kditem=='06'">Harga : {{de.des4}}</p>
@@ -43,10 +28,11 @@
                     <p *ngIf="d.kditem=='07'">Harga : {{de.des3}}</p>
                     <p *ngIf="d.kditem=='08'">{{de.des2}}</p>
                     <p *ngIf="d.kditem=='09'">{{de.des2}}</p>
-                    <ion-icon style="color: #e4e4e4;" name="md-arrow-dropright" item-right
-                              *ngIf="de.show==0"></ion-icon>
-                    <ion-icon style="color: #e4e4e4;" name="md-arrow-dropdown" item-right *ngIf="de.show==1"></ion-icon>
-                </button>
+                    <!--<ion-icon style="color: #e4e4e4;" name="md-arrow-dropright" item-right-->
+                              <!--*ngIf="de.show==0"></ion-icon>-->
+                    <!--<ion-icon style="color: #e4e4e4;" name="md-arrow-dropdown" item-right *ngIf="de.show==1"></ion-icon>-->
+                </div>
+                </ion-item>
                 <ion-item-divider color="light" *ngIf="de.show==1"
                                   style="margin-left: 3px; border-left: 1px #e4e4e4 solid; border-bottom: 1px #e4e4e4 solid; border-bottom-left-radius: 10px;">
                     <ion-row>
@@ -55,8 +41,9 @@
                                 <p *ngIf="d.kditem=='09'">Alamat : </p>
                                 {{de.des3}}
                             </div>
-                            <div text-wrap *ngIf="d.kditem=='02' || d.kditem=='04' || d.kditem=='05' || d.kditem=='06' || d.kditem=='10' ">
+                            <div text-wrap *ngIf="d.kditem=='02' || d.kditem=='03' || d.kditem=='04' || d.kditem=='05' || d.kditem=='06' || d.kditem=='10' ">
                                 <p *ngIf="d.kditem=='06'">Alamat : </p>
+                                <p *ngIf="d.kditem=='03'">Fasilitas : </p>
                                 {{de.des2}}
                             </div>
                             <div text-wrap *ngIf="d.kditem=='07'">
@@ -66,6 +53,13 @@
                         </ion-col>
                     </ion-row>
                 </ion-item-divider>
+                <ion-row no-padding *ngIf="ses">
+                    <ion-col text-right>
+                        <button ion-button clear small color="danger" icon-start (click)="del(de.iddes)">
+                            <ion-icon name='md-trash'> </ion-icon> Hapus
+                        </button>
+                    </ion-col>
+                </ion-row>
             </ion-list>
         </ion-card-content>
 

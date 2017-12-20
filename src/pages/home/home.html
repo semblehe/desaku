@@ -23,9 +23,28 @@
       {{ ar.judul }}
       </ion-card-title>
     <p align="justify">
-      {{ ar.artikel }}
+      {{ ar.des }} <a (click)="detail(ar.idartikel)"> readmore >> </a>
     </p>
   </ion-card-content>
+    <ion-row no-padding *ngIf="ses">
+      <!--<ion-col>-->
+        <!--<button ion-button clear small color="danger" icon-start>-->
+          <!--<ion-icon name='star'></ion-icon>-->
+          <!--Favorite-->
+        <!--</button>-->
+      <!--</ion-col>-->
+      <!--<ion-col text-center>-->
+        <!--<button ion-button clear small color="danger" icon-start>-->
+          <!--<ion-icon name='musical-notes'></ion-icon>-->
+          <!--Listen-->
+        <!--</button>-->
+      <!--</ion-col>-->
+      <ion-col text-right >
+        <button ion-button clear small color="danger" icon-start (click)="del(ar.idartikel)">
+          <ion-icon name='md-trash'> </ion-icon> Hapus
+        </button>
+      </ion-col>
+    </ion-row>
 </ion-card>
 
 <ion-fab right bottom *ngIf="ses">

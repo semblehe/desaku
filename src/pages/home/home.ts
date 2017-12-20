@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController, Loading, AlertController, App } from 'ionic-angular';
 import { TartikelPage } from "../home/tartikel";
+import { DetailPage } from "../home/detail";
 import { LoginPage } from "../login/login";
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {TabsPage} from "../tabs/tabs";
 
 @Component({
   selector: 'page-home',
@@ -24,7 +26,7 @@ export class HomePage {
   }
 
   getArtikel() {
-  		this.showLoading();
+  	  this.showLoading();
 
       let link = 'http://sockieshop.com/webservice/artikel';
 
@@ -44,6 +46,44 @@ export class HomePage {
   			});
   	}
 
+  	detail(a):void {
+  	    console.log(a);
+			this.navCtrl.push(DetailPage, {idart:a});
+	}
+
+    del(a):void {
+        let confirm = this.alertCtrl.create({
+            title: 'Peringatan !! ',
+            message: 'Apa Anda Yakin Hapus Artikel?',
+            buttons: [
+                {
+                    text: 'Tidak',
+                    handler: () => {
+                        console.log('Disagree clicked');
+                    }
+                },
+                {
+                    text: 'Ya',
+                    handler: () => {
+                        this.showLoading();
+                        let link = 'http://sockieshop.com/webservice/delartikel';
+                        let datas = JSON.stringify({idart: a});
+
+                        this.http.post(link, datas).map(res => res.json())
+                            .subscribe(data => {
+                                this.loading.dismiss();
+                                this.setAlert('Success', 'Berhasil Hapus Data');
+                                this.navCtrl.setRoot(TabsPage);
+                            }, error => {
+                                this.loading.dismiss();
+                                this.setAlert('Error', 'Periksa jaringan internet anda');
+                            });
+                    }
+                }
+            ]
+        });
+        confirm.present();
+    }
     tambah():void {
     this.navCtrl.push(TartikelPage);
     }
